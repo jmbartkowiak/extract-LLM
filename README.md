@@ -1,4 +1,4 @@
-# Python Text Processing Project (v8.0.X)
+# Python Text Processing Project (v0.8.X)
 
 This project is a Python-based system designed for automating text processing tasks, emphasizing robust logging, detailed code comments, and a flexible architecture. Initially conceived as a personal experiment to automate repetitive tasks, it has evolved into a comprehensive demonstration project showcasing my recent academic experiences with programming and data science. While such a system could be mimicked, to some extent, by direct queries with file uploads (which are coded but not currently used) - the data collection focus for future model training, elimination of the need to copy paste individual parts to preserve complex formatting, and adaptability to different contexts (in addition to applying new skills in software development) serve to differentiate this approach.
 
