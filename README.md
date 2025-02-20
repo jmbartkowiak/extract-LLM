@@ -1,4 +1,4 @@
-# Python Text Processing Project
+# Python Text Processing Project (v8.0.X)
 
 This project is a Python-based system designed for automating text processing tasks, emphasizing robust logging, detailed code comments, and a flexible architecture. Initially conceived as a personal experiment to automate repetitive tasks, it has evolved into a comprehensive demonstration project showcasing my recent academic experiences with programming and data science.
 
@@ -100,7 +100,10 @@ TEMP_DIR=TEMP
 
 - **Focus on Practical Learning**: A significant goal was to show how one might build a fully functional pipeline that can pivot from purely educational to real use cases: hooking into multiple LLMs, orchestrating data extraction logic, and systematically logging results. Working with both the text extraction of resumes and job applications presented an easily accessible (given the personal repository of old resumes) and diverse domain to refine the project's capabilities.
 
-## Future Expansions
+## Future Expansions and Goals
+
+### Immediate goals
+- **Resolve "[ERROR] Failed to process job-descriptiong.txt: Failed to extract job data: '\n  "Title"' " error that has suddenly cropped up between v7.8.X and v8.0.X, as previous versions were able to correctly extract this data. Likely culprit is the new more extensive logging system.
 
 By following this roadmap, the project will evolve into a more robust research and experimentation platform for text analytics, LLM refinement, and domain-specific statistical data correlations.
 
