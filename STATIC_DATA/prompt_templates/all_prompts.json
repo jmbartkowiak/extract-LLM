@@ -1,0 +1,59 @@
+{
+  "_metadata": {
+    "filename": "all_prompts.json",
+    "date": "2/19/2025",
+    "version": "v8.0.5"
+  },
+  "job_extraction_prompt": {
+    "prompt": "Extract job details from this description and return them in a valid JSON object. Your response MUST be a JSON object with EXACTLY these fields:\n\n{\n  \"Title\": \"string\",\n  \"Company Name\": \"string\",\n  \"Location\": \"string\",\n  \"field\": \"string\",\n  \"Salary\": \"string\",\n  \"posting_date\": \"string\",\n  \"cleaned_description\": \"string\"\n}\n\nRules:\n1. Start response with '{' and end with '}'\n2. Use double quotes for all strings\n3. No comments or extra text\n4. No trailing commas\n5. No newlines in values\n6. Use 'UNKNOWN' for any missing fields\n7. Do not use markdown code blocks\n8. Do not add any text before or after the JSON\n\nExample response:\n{\n  \"Title\": \"Data Analyst\",\n  \"Company Name\": \"Example Corp\",\n  \"Location\": \"New York, NY\",\n  \"field\": \"Data Science\",\n  \"Salary\": \"$80,000 - $100,000\",\n  \"posting_date\": \"2025-02-20\",\n  \"cleaned_description\": \"Looking for an experienced data analyst...\"\n}\n\nHere's the job description to analyze:\n\n{raw_text}",
+    "system_message": "You are a JSON generator. Your ONLY task is to return a valid JSON object with the exact structure specified. Do not include any explanations, markdown formatting, code blocks, or extra text. Just return the raw JSON object starting with '{' and ending with '}'."
+  },
+  "field_categorization_prompt": {
+    "prompt": "You are a job field categorization assistant. The known fields are:\n{fields_list}\n\nThe job is described as:\n{job_description}\n\n1) Pick the best matching field from the known set if it applies.\n2) If none of these fields are appropriate, propose a new field name.\n3) Return only the field name (as a string).\n\nExample output: \"Data Science\"",
+    "system_message": "Return a single string representing the best matching field. Do not include any additional formatting, comments, or text."
+  },
+  "resume_extraction_prompt": {
+    "prompt": "You MUST return a valid JSON object with EXACTLY this structure:\n{\n  \"objective\": \"string\",\n  \"skills_list\": [\"string\", \"string\", ...],\n  \"jobs_section\": [\n    {\n      \"title\": \"string\",\n      \"company\": \"string\",\n      \"dates\": \"string\",\n      \"bullets\": [\n        {\n          \"bolded_overview\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"education\": [\"string\"],\n  \"certifications\": [\"string\"]\n}\n\nRules:\n1. Start response with '{' and end with '}'\n2. Use double quotes for all strings\n3. No comments or extra text\n4. No trailing commas\n5. No newlines in values\n6. skills_list must have exactly 10 items\n7. Use empty arrays [] for sections with no data\n8. Do not use markdown code blocks\n9. Do not add any text before or after the JSON\n\nExample response:\n{\n  \"objective\": \"Experienced software engineer seeking challenging role\",\n  \"skills_list\": [\"Python\", \"JavaScript\", \"React\", \"Node.js\", \"SQL\", \"Git\", \"AWS\", \"Docker\", \"REST APIs\", \"Agile\"],\n  \"jobs_section\": [\n    {\n      \"title\": \"Senior Software Engineer\",\n      \"company\": \"Tech Corp\",\n      \"dates\": \"2020-2023\",\n      \"bullets\": [\n        {\n          \"bolded_overview\": \"Project Leadership\",\n          \"description\": \"Led team of 5 engineers in developing microservices architecture\"\n        }\n      ]\n    }\n  ],\n  \"education\": [\"BS Computer Science, University of Example, 2019\"],\n  \"certifications\": [\"AWS Certified Developer\"]\n}\n\nExtract resume details from this text:\n\n{resume_text}",
+    "system_message": "You are a JSON generator. Your ONLY task is to return a valid JSON object with the exact structure specified. Do not include any explanations, markdown formatting, code blocks, or extra text. Just return the raw JSON object starting with '{' and ending with '}'."
+  },
+  "resume_extraction_strict_prompt": {
+    "prompt": "You MUST return a valid JSON object with EXACTLY this structure:\n{\n  \"objective\": \"string\",\n  \"skills_list\": [\"string\", \"string\", ...],\n  \"jobs_section\": [\n    {\n      \"title\": \"string\",\n      \"company\": \"string\",\n      \"dates\": \"string\",\n      \"bullets\": [\n        {\n          \"bolded_overview\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"education\": [\"string\"],\n  \"certifications\": [\"string\"]\n}\n\nRules:\n1. Start response with '{' and end with '}'\n2. Use double quotes for all strings\n3. No comments or extra text\n4. No trailing commas\n5. No newlines in values\n6. skills_list must have exactly 10 items\n7. Use empty arrays [] for sections with no data\n8. Do not use markdown code blocks\n9. Do not add any text before or after the JSON\n\nExample response:\n{\n  \"objective\": \"Experienced software engineer seeking challenging role\",\n  \"skills_list\": [\"Python\", \"JavaScript\", \"React\", \"Node.js\", \"SQL\", \"Git\", \"AWS\", \"Docker\", \"REST APIs\", \"Agile\"],\n  \"jobs_section\": [\n    {\n      \"title\": \"Senior Software Engineer\",\n      \"company\": \"Tech Corp\",\n      \"dates\": \"2020-2023\",\n      \"bullets\": [\n        {\n          \"bolded_overview\": \"Project Leadership\",\n          \"description\": \"Led team of 5 engineers in developing microservices architecture\"\n        }\n      ]\n    }\n  ],\n  \"education\": [\"BS Computer Science, University of Example, 2019\"],\n  \"certifications\": [\"AWS Certified Developer\"]\n}\n\nExtract resume details from this text:\n\n{resume_text}",
+    "system_message": "You are a JSON generator. Your ONLY task is to return a valid JSON object with the exact structure specified. Do not include any explanations, markdown formatting, code blocks, or extra text. Just return the raw JSON object starting with '{' and ending with '}'."
+  },
+  "objective_optimization_prompt": {
+    "prompt": "You are an expert resume optimizer. Given the following aggregated overview statements:\n{objectives}\n\nAnd the job description:\n{job_description}\n\nGenerate a new, unified overview statement (to be placed in <OverView>) that is tailored to the job.\nReturn only the overview statement.\n\nExample output:\n\"Experienced Associate Scientist with expertise in microbiology, data analytics, and laboratory management.\"",
+    "system_message": "Return a single overview statement as a string. Do not include any additional formatting, comments, or text. "
+  },
+  "skills_optimization_prompt": {
+    "prompt": "You are a resume content specialist. Given the aggregated skills from several resumes:\n{skills_list}\n\nAnd the job description:\n{job_description}\n\nProduce an optimized set of exactly 10 skills that are directly relevant to the job and non-overlapping.\nReturn the skills as a comma-separated list.\n\nExample output:\n\"Python, Data Analysis, Machine Learning, NLP, SQL, Git, Statistics, Research, Problem Solving, Communication\"",
+    "system_message": "Return exactly 10 comma-separated skills as a single string. Do not include any extra commentarty, text, or formatting."
+  },
+  "bullet_optimization_prompt": {
+    "prompt": "You are a resume bullet optimizer. Given the following job bullet points:\n{bullets_list}\n\nAnd the job description:\n{job_description}\n\nGenerate an optimized set of bullet points that best reflect the requirements of the job. Ensure each bullet includes a bolded mini-title followed by a description.\nReturn the result as a JSON array of objects with keys \"bolded_overview\" and \"description\".\n\nExample output:\n[\n  {\"bolded_overview\": \"Implemented Data Pipelines\", \"description\": \"Developed and maintained ETL processes for data ingestion.\"},\n  {\"bolded_overview\": \"Optimized ML Models\", \"description\": \"Improved model performance by 20% through hyperparameter tuning.\"}\n] \n Remember to use correct JSON formatting with the appropriate depth and formatting.",
+    "system_message": "Return a JSON array where each element is an object with keys: bolded_overview and description. Do not include any additional formatting, comments, or text."
+  },
+  "job_match_evaluation_prompt": {
+    "prompt": "You are a job match evaluator. Given the compiled resume content:\n{optimized_resume}\n\nAnd the job description:\n{job_description}\n\nEvaluate how well the resume matches the job on a scale of 0 to 100.\nReturn a JSON object with keys \"match_rating\" (a number between 0 and 100) and \"explanation\".\n\nExample output:\n{\n  \"match_rating\": 85,\n  \"explanation\": \"The resume demonstrates strong relevant skills and experience matching the job requirements.\"\n} Remember to use correct JSON formatting with the appropriate depth and formatting.",
+    "system_message": "Return valid JSON with keys: match_rating (number) and explanation (string). Do not include any additional formatting, comments, or text."
+  },
+  "overall_summarization_prompt": {
+    "prompt": "You are a summarization assistant. Given the following content:\n{full_text}\n\nCondense it to fit within {page_limit} pages.\nReturn only the summarized version as a plain text string.\n\nExample output:\n\"A concise summary highlighting key experiences and skills relevant to the job.\"",
+    "system_message": "Return a plain text summary. Do not include any additional formatting, comments, or text."
+  },
+  "shorten_section_prompt": {
+    "prompt": "Please reduce the following {section_name} by {reduction_percentage}%:\n{section_text}\nReturn only the revised text as a plain string.\n\nExample output:\n\"Revised section text with reduced content.\"",
+    "system_message": "Return a revised version of the section text. Do not include any additional formatting, comments, or text."
+  },
+  "least_relevant_skills_prompt": {
+    "prompt": "Given the following 10 skills:\n{skills_list}\nIdentify the {least_relevant_count} least relevant skills and return their corresponding numbers as a comma-separated list.\n\nExample output:\n\"2, 5\"",
+    "system_message": "Return a comma-separated list of numbers. Do not include any additional formatting, comments, or text."
+  },
+  "section_summarization_prompt": {
+    "prompt": "Summarize this {section_name} to fit within {max_chars} characters:\n\n{text}\nReturn only the summarized text.\n\nExample output:\n\"Summarized text to fit within the character limit.\"",
+    "system_message": "Return only the summarized text as a plain string. Do not include any additional formatting, comments, or text."
+  },
+  "section_reduction_prompt": {
+    "prompt": "Reduce the following {section_name} by {reduction_percentage}% while preserving key information:\n\n{text}\nReturn only the revised {section_name} text.\n\nExample output:\n\"Reduced section text preserving key details.\"",
+    "system_message": "Return the revised section text as a plain string. Do not include any additional formatting, comments, or text."
+  }
+}
