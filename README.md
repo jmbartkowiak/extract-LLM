@@ -4,7 +4,8 @@ This project is a Python-based system designed for automating text processing ta
 
 While resumes and job descriptions serve as easily accessible example domains (especially useful given my large repository of old resumes), the core modules are designed for broad adaptability. This means the system can extract, parse, and transform virtually any text. The resumes and job descriptions were chosen mainly for the ease of obtaining sample data.
 
-3/3/25 NOTE: Revsion of project features needed given nearly full rewrite of code due to data parsing error that can't be rectified with previous architecture 
+3/3/25 NOTE: Revsion of project features needed given nearly full rewrite of code due to data parsing error that can't be rectified with previous architecture and to allow integration of DSPy based prompting
+
 The project features:
 
 - **Flexible Data Extraction & Parsing**: Although the initial example centers on resumes and job descriptions (chosen mainly for the ease of obtaining sample data), the underlying pipeline can be adapted to nearly any text domain. The extraction modules in `resume_extractor.py` and `job_extractor.py` illustrate how to parse different document formats (TXT, PDF, DOCX, etc.) and produce consistent JSON output.
