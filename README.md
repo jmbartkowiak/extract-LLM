@@ -2,7 +2,10 @@
 
 This project is a Python-based system designed for automating text processing tasks, emphasizing robust logging, detailed code comments, and a flexible architecture. Initially conceived as a personal experiment to automate repetitive tasks, it has evolved into a comprehensive demonstration project showcasing my recent academic experiences with programming and data science. While such a system could be mimicked, to some extent, by direct queries with file uploads (which are coded but not currently used) - the data collection focus for future model training, elimination of the need to copy paste individual parts to preserve complex formatting, and adaptability to different contexts (in addition to applying new skills in software development) serve to differentiate this approach.
 
-While resumes and job descriptions serve as easily accessible example domains (especially useful given my large repository of old resumes), the core modules are designed for broad adaptability. This means the system can extract, parse, and transform virtually any text. The resumes and job descriptions were chosen mainly for the ease of obtaining sample data. The project features:
+While resumes and job descriptions serve as easily accessible example domains (especially useful given my large repository of old resumes), the core modules are designed for broad adaptability. This means the system can extract, parse, and transform virtually any text. The resumes and job descriptions were chosen mainly for the ease of obtaining sample data.
+
+3/3/25 NOTE: Revsion of project features needed for rewrite of code due to data parsing error that can't be rectified with previous architecture 
+The project features:
 
 - **Flexible Data Extraction & Parsing**: Although the initial example centers on resumes and job descriptions (chosen mainly for the ease of obtaining sample data), the underlying pipeline can be adapted to nearly any text domain. The extraction modules in `resume_extractor.py` and `job_extractor.py` illustrate how to parse different document formats (TXT, PDF, DOCX, etc.) and produce consistent JSON output.
 
