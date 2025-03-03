@@ -1,4 +1,4 @@
-# Python Text Processing Project (v0.8.X)
+# Python Text Processing Project (v9.4.X-10.0.X)
 
 This project is a Python-based system designed for automating text processing tasks, emphasizing robust logging, detailed code comments, and a flexible architecture. Initially conceived as a personal experiment to automate repetitive tasks, it has evolved into a comprehensive demonstration project showcasing my recent academic experiences with programming and data science. While such a system could be mimicked, to some extent, by direct queries with file uploads (which are coded but not currently used) - the data collection focus for future model training, elimination of the need to copy paste individual parts to preserve complex formatting, and adaptability to different contexts (in addition to applying new skills in software development) serve to differentiate this approach.
 
@@ -103,7 +103,7 @@ TEMP_DIR=TEMP
 ## Future Expansions and Goals
 
 ### Immediate goals
-- **Resolve "[ERROR] Failed to process job-descriptiong.txt: Failed to extract job data: '\n  "Title"' " error that has suddenly cropped up between v7.8.X and v8.0.X, as previous versions were able to correctly extract this data. Likely culprit is the new more extensive logging system.
+- Finish rewriting of code for final data collation from json elements (phase 5 of 5 in full rewrite of approach)
 
 By following this roadmap, the project will evolve into a more robust research and experimentation platform for text analytics, LLM refinement, and domain-specific statistical data correlations.
 
@@ -114,18 +114,19 @@ By following this roadmap, the project will evolve into a more robust research a
    - Add a job queue or scheduling layer to better manage large-scale data ingestion and transformation tasks.
 
 2. **Enhanced Data Logging & Correlation**
+   - Implement proper integration with postgreSQL to allow for vector search and job/resume element embeddings via pgvector
    - Expand logging coverage to capture more metadata, including user interactions, versioned prompt templates, and performance metrics across different datasets.
    - Establish new modules for automatically correlating textual patterns with domain-specific KPIs (e.g., classification accuracy or data integrity markers).
 
-3. **Multi-Domain Scaling**
+4. **Multi-Domain Scaling**
    - Generalize the extraction pipeline to seamlessly swap in new data parsers for diverse document structures (e.g., research papers, legal texts, or support tickets).
    - Provide user-friendly configuration to select or build custom extraction methods without modifying core logic.
 
-4. **LoRA / Adapter-Based Training**
+5. **LoRA / Adapter-Based Training**
    - Leverage newly collected or curated datasets to gradually refine model responses for domain-specific tasks.
    - Integrate local or cloud-based LoRA-like fine-tuning workflows for specialized LLM adaptations, allowing advanced correlations and data-driven insights.
 
-5. **Monitoring & CI/CD**
+6. **Monitoring & CI/CD**
     - Implement automated tests, coverage checks, and continuous integration pipelines.
     - Integrate real-time monitoring dashboards for advanced debugging and performance oversight.
 
